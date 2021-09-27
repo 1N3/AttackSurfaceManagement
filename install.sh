@@ -1,6 +1,6 @@
 #!/bin/bash
 # Install script for sn1per
-# Created by @xer0dayz - https://xerosecurity.com
+# Created by @xer0dayz - https://sn1persecurity.com
 
 OKBLUE='\033[94m'
 OKRED='\033[91m'
@@ -15,7 +15,7 @@ echo -e "$OKRED  (__  ) / / // // /_/ /  __/ /    $RESET"
 echo -e "$OKRED /____/_/ /_/___/ .___/\___/_/     $RESET"
 echo -e "$OKRED               /_/                 $RESET"
 echo -e "$RESET"
-echo -e "$OKORANGE + -- --=[ https://xerosecurity.com $RESET"
+echo -e "$OKORANGE + -- --=[ https://sn1persecurity.com $RESET"
 echo -e "$OKORANGE + -- --=[ Sn1per by @xer0dayz $RESET"
 echo ""
 
@@ -35,9 +35,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 mkdir -p $INSTALL_DIR 2> /dev/null
-chmod 777 -Rf $INSTALL_DIR 2> /dev/null
+chmod 755 -Rf $INSTALL_DIR 2> /dev/null
 chown root $INSTALL_DIR/sniper 2> /dev/null
-chmod 4777 $INSTALL_DIR/sniper 2> /dev/null
 mkdir -p $LOOT_DIR 2> /dev/null
 mkdir $LOOT_DIR/domains 2> /dev/null
 mkdir $LOOT_DIR/screenshots 2> /dev/null
@@ -161,7 +160,6 @@ git clone https://github.com/hisxo/gitGraber.git
 git clone https://github.com/1N3/LinkFinder
 git clone https://github.com/christophetd/censys-subdomain-finder.git
 git clone https://github.com/rbsec/dnscan.git
-git clone https://github.com/infosec-au/altdns.git 
 git clone https://github.com/blechschmidt/massdns.git
 git clone https://github.com/ProjectAnte/dnsgen
 git clone https://github.com/scipag/vulscan
@@ -177,11 +175,7 @@ cd ..
 pip3 install -r $PLUGINS_DIR/gitGraber/requirements.txt
 pip3 install -r $PLUGINS_DIR/censys-subdomain-finder/requirements.txt
 pip3 install -r $PLUGINS_DIR/dnscan/requirements.txt 
-cd altdns
-pip3 install -r requirements.txt 
-python2 setup.py install 
-pip3 install py-altdns 2> /dev/null
-cd ..
+pip3 install py-altdns
 cd massdns
 make && make install
 cd ..
